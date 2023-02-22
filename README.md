@@ -41,7 +41,4 @@ To run the frontend application, try running the following command
 cd frontend && npm run dev
 ```
 
-If you like the project and feeling generous:
-ETH 0x05c5628E781acF12CD1F62AEBE01Df5059df7A66
-
 Happy minting!!!
