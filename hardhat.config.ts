@@ -14,7 +14,7 @@ const config: HardhatUserConfig = {
     networks: {
         hardhat: {
             chainId: 1337,
-            saveDeployments: true
+            saveDeployments: false
         },
         goerli: {
             accounts: [PRIVATE_KEY],
