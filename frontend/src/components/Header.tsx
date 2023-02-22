@@ -11,7 +11,7 @@ const Header = () => {
     };
 
     const content = (
-        <nav className="flex h-20 items-center bg-pop-dark_ui-900 p-5">
+        <nav className="flex h-16 items-center bg-pop-dark_ui-900 p-5">
             <div className="container mx-auto flex max-w-7xl items-center justify-between gap-10">
                 <span className="text-center text-xl font-semibold">AI NFT</span>
 
