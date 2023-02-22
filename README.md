@@ -1,13 +1,47 @@
-## Sample Hardhat Project
+## AI NFT Minting Dapp
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a script that deploys that contract.
+OpenAI based NFT minting dapp
 
-Try running some of the following tasks:
+### Quickstart
+
+Clone the project with:
+
+```
+git clone https://github.com/zaimabbasi/ai-nft-minting-dapp
+cd ai-nft-minting-dapp
+```
+
+### Install Dependencies
+
+Install root dependencies with:
 
 ```shell
-npx hardhat help
-npx hardhat test
-REPORT_GAS=true npx hardhat test
-npx hardhat node
-npx hardhat run scripts/deploy.ts
+npm install
 ```
+
+Install frontend dependencies with:
+
+```shell
+cd frontend && npm install
+```
+
+### Hardhat
+
+To run hardhat tests, try running the following command:
+
+```shell
+npx hardhat test
+```
+
+### Frontend
+
+To run the frontend application, try running the following command
+
+```shell
+cd frontend && npm run dev
+```
+
+If you like the project and feeling generous:
+ETH 0x05c5628E781acF12CD1F62AEBE01Df5059df7A66
+
+Happy minting!!!
