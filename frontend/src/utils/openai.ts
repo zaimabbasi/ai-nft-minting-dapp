@@ -5,6 +5,7 @@ const configuration = new Configuration({ apiKey: OPENAI_API_KEY });
 const openai = new OpenAIApi(configuration);
 
 export const createImage = async (prompt: string) => {
+    console.log(configuration);
     try {
         const response = await openai.createImage({
             prompt,
