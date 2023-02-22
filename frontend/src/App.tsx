@@ -20,9 +20,7 @@ const App = () => {
     const [isAppStarted, setIsAppStarted] = useState<boolean>(false);
     const [provider, setProvider] = useState<BrowserProvider>();
     const [nft, setNft] = useState<any>();
-    const [mintedTokenURI, setMintedTokenURI] = useState<string>();
-    const [safeMintLocation, setSafeMintLocation] = useState<string>();
-    const [withdrawLocation, setWithdrawLocation] = useState<string>();
+    const [mintedTokenURI, setMintedTokenURI] = useState<string>("");
 
     useEffect(() => {
         const detectProvider = async () => {
@@ -76,12 +74,12 @@ const App = () => {
         window.location.reload();
     };
 
-    const onSafeMint = (recipient: string, tokenId: BigInt, tokenURI: string) => {
+    const onSafeMint = async (recipient: string, tokenId: BigInt, tokenURI: string) => {
         console.log("onSafeMint:", recipient, tokenId, tokenURI);
         setMintedTokenURI(tokenURI);
     };
 
-    const onWithdrawBalance = (amount: BigInt) => {
+    const onWithdrawBalance = async (amount: BigInt) => {
         console.log("onWithdrawBalance", amount);
     };
 
@@ -235,7 +233,7 @@ const App = () => {
                             />
 
                             <button
-                                className="flex w-full items-center justify-center gap-1 rounded-md bg-pop-blue-dark px-3 py-2 enabled:hover:bg-pop-blue-light"
+                                className="flex w-full items-center justify-center gap-3 rounded-md bg-pop-blue-dark px-3 py-2 enabled:hover:bg-pop-blue-light"
                                 type="submit"
                                 disabled={isCreatingImage}
                             >
@@ -252,10 +250,19 @@ const App = () => {
                     </div>
                 ) : (
                     <div className="flex flex-col items-center">
-                        <div className="text-center">
-                            <h1 className="text-lg font-semibold sm:text-xl">Mint NFT</h1>
-                            <p className="mt-1 text-sm sm:text-base">Give your image a nice name and start minting!</p>
-                        </div>
+                        {mintedTokenURI ? (
+                            <div className="text-center">
+                                <h1 className="text-lg font-semibold sm:text-xl">Success</h1>
+                                <p className="mt-1 text-sm sm:text-base">NFT token created!</p>
+                            </div>
+                        ) : (
+                            <div className="text-center">
+                                <h1 className="text-lg font-semibold sm:text-xl">Mint NFT</h1>
+                                <p className="mt-1 text-sm sm:text-base">
+                                    Give your image a nice name and start minting!
+                                </p>
+                            </div>
+                        )}
 
                         <img
                             className="mt-7 w-full max-w-xl rounded-md"
@@ -265,13 +272,18 @@ const App = () => {
 
                         {mintedTokenURI ? (
                             <div className="flex w-full max-w-xl flex-col items-center justify-center gap-5">
-                                <div className="mt-7 flex w-full max-w-xl items-center justify-center rounded-md bg-pop-dark_ui-500 p-5">
-                                    <a className="hover:underline" href={mintedTokenURI} target="_blank">
-                                        <span> {mintedTokenURI}</span>
+                                <div className="mt-7 flex w-full items-center justify-center rounded-md bg-pop-dark_ui-500 p-5">
+                                    <a
+                                        className="text-center hover:underline"
+                                        href={`ipfs://${mintedTokenURI}`}
+                                        target="_blank"
+                                    >
+                                        Token URI
                                     </a>
                                 </div>
+
                                 <button
-                                    className="flex w-full max-w-xl items-center justify-center rounded-md bg-pop-grey-light px-3 py-2 enabled:hover:bg-pop-grey-dark dark:bg-pop-blue-dark dark:enabled:hover:bg-pop-blue-light"
+                                    className="flex w-full items-center justify-center rounded-md bg-pop-orange-dark px-3 py-2 hover:bg-pop-orange-light"
                                     type="button"
                                     disabled={isMintingNFT}
                                     onClick={handleReset}
@@ -297,7 +309,7 @@ const App = () => {
                                 />
                                 <div className="items-center-justify-between flex gap-3">
                                     <button
-                                        className="flex w-full items-center justify-center gap-1 rounded-md bg-pop-red-dark px-3 py-2 enabled:hover:bg-pop-red-light"
+                                        className="flex w-full items-center justify-center rounded-md bg-pop-red-dark px-3 py-2 enabled:hover:bg-pop-red-light"
                                         type="button"
                                         disabled={isMintingNFT}
                                         onClick={handleReset}
@@ -306,7 +318,7 @@ const App = () => {
                                     </button>
 
                                     <button
-                                        className="flex w-full items-center justify-center gap-1 rounded-md bg-pop-blue-dark px-3 py-2 enabled:hover:bg-pop-blue-light"
+                                        className="flex w-full items-center justify-center gap-3 rounded-md bg-pop-green-dark px-3 py-2 enabled:hover:bg-pop-green-light"
                                         type="submit"
                                         disabled={isMintingNFT}
                                     >
