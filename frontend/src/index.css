@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    body {
+        @apply bg-pop-dark_ui-700 text-pop-light_neutral_grey-100 transition duration-300 ease-in-out;
+    }
+}
